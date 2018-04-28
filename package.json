@@ -1,0 +1,70 @@
+{
+  "name": "bexl",
+  "version": "0.1.0",
+  "description": "A parser and interpreter for the Basic EXpression Language (BEXL)",
+  "keywords": [
+    "bexl",
+    "basic",
+    "expression",
+    "language"
+  ],
+  "author": "Jason Simeone",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bexl/bexl-js.git"
+  },
+  "main": "lib/index.js",
+  "unpkg": "dist/bexl.min.js",
+  "browser": "dist/bexl.min.js",
+  "bin": {
+    "bexl": "lib/cli.js"
+  },
+  "dependencies": {
+    "argparse": "^1.0.10",
+    "enumify": "^1.0.4",
+    "lodash": "^4.17.5",
+    "luxon": "^1.0.0",
+    "readline-sync": "^1.4.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "flow-bin": "^0.69.0",
+    "mocha": "^5.0.5",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-license": "^0.6.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^3.0.0",
+    "yamljs": "^0.3.0"
+  },
+  "scripts": {
+    "build:node": "rm -rf ./lib && babel src -d lib",
+    "build:node:watch": "rm -rf ./lib && babel src -d lib --watch",
+    "build:browser": "rm -rf ./dist && rollup --config",
+    "build:browser:watch": "rm -rf ./dist && rollup --config --watch",
+    "build": "npm run build:node && npm run build:browser",
+    "lint": "eslint --no-ignore ./src ./rollup.config.js ./.eslintrc.js",
+    "flow": "flow",
+    "tidy": "npm run lint && npm run flow",
+    "test:node": "npm run build:node && mocha --require babel-register",
+    "test:node:watch": "mocha --require babel-register --watch",
+    "test": "npm run test:node"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ]
+}
