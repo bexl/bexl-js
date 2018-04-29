@@ -3,7 +3,7 @@ const DateTime = require('luxon').DateTime;
 const YAML = require('yamljs');
 const expect = require('chai').expect;
 
-const bexl = require('..');
+const bexl = require('../src');
 
 
 const SUITE = YAML.load(`${__dirname}/standard_test_suite.yaml`).suite;
